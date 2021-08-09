@@ -24,7 +24,7 @@ export default function Squares() {
   // 'activeSquare'. One holds the _array_ of square ids, and the other keeps track
   // of the currently active square. On page load there's no active square,
   // so the value of 'activeSquare' should be null.
-  const [squares, setSquares] = useState(listOfSquareIds);
+  const [squares] = useState(listOfSquareIds);
   const [activeSquare, setActiveSquare] = useState(null);
 
   const getClassName = (id) => {
@@ -51,7 +51,7 @@ export default function Squares() {
           // Nasty bug! We should map over a slice of state, instead of 'listOfSquareIds'.
           // We might say: "it works, though!" But if the list of squares is not state,
           // we could never add squares, change squares or remove squares in the future. Fix!
-          listOfSquareIds.map((id) => (
+          squares.map((id) => (
             <div id={id} key={id} className={`square ${getClassName(id)}`} onClick={() => markActive(id)}></div>
           ))
         }
